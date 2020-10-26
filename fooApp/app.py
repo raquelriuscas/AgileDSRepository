@@ -8,9 +8,16 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-app.config.from_pyfile('../settings.py')
+
+# app.config.from_pyfile('../settings.py')
+app.config['MONGO_DBNAME'] = 'foodb'
+app.config['MONGO_URI'] = 'mongodb+srv://raquelrius:DBlyy7dT9fjHqwbA@cluster0.nkpgc.mongodb.net/foodb'
 mongo = PyMongo(app)
 
+app.config['SECRET_KEY'] = 'enydM2ANhdcoKwdVa0jWvEsbPFuQpMjf'  # Create your own.
+app.config['SESSION_PROTECTION'] = 'strong'
+
+# Use Flask-Login to track current user in Flask's session.
 login_manager = LoginManager()
 login_manager.setup_app(app)
 login_manager.login_view = 'login'
