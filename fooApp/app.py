@@ -44,7 +44,7 @@ def product_edit(product_id):
     if request.method == 'POST' and form.validate():
         mongo.db.products.update_one({'_id': ObjectId(product_id)}, {'$set': form.data})
         return redirect(url_for('products_list'))
-    return render_template('product/edit.html', form=form)
+    return render_template('product/edit.html', form=form, product=product)
 
 
 @app.route('/products/create/', methods=['GET', 'POST'])
@@ -57,7 +57,7 @@ def product_create():
         # Success. Send user back to full product list.
         return redirect(url_for('products_list'))
     # Either first load or validation error at this point.
-    return render_template('product/edit.html', form=form)
+    return render_template('product/edit.html', form=form, product={})
 
 
 @app.route('/products/<product_id>/')

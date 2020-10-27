@@ -12,11 +12,11 @@
   <form method="post" class="form-horizontal">
     <legend>{{ name }}</legend>
     {{ edit_field(form.name, maxlength=255, class="span3",
-      placeholder="Product name") }}
+      placeholder="Product name", value=product.name) }}
     {{ edit_field(form.description, rows="5", class="span5",
-      placeholder="Product description.") }}
+      placeholder="Product description.", value=product.description) }}
     {{ edit_field(form.price, class="span3",
-      placeholder="0.01") }}
+      placeholder="0.01", value=product.price) }}
     <div class="form-actions">
     <button type="submit" class="btn">Save</button>
     or <a href="{{ url_for('products_list') }}">Cancel</a>
